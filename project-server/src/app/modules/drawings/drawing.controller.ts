@@ -1,28 +1,20 @@
 import { Request, Response, RequestHandler } from 'express';
 import catchAsync from '../../../utils/catchAsync';
-import { DrawingModel, validateDrawing } from './drawing.model';
+import { DrawingModel, UpdateDrawing, validateDrawing } from './drawing.model';
 
 // Create a new drawing
 export const createDrawing: RequestHandler = catchAsync(
   async (req: Request, res: Response): Promise<void> => {
-    try {
-      const drawingData = validateDrawing(req.body);
+    const drawingData = validateDrawing(req.body);
 
-      const newDrawing = await DrawingModel.create(drawingData);
+    const newDrawing = await DrawingModel.create(drawingData);
 
-      res.status(201).json({
-        statusCode: 201,
-        success: true,
-        message: 'Successfully created a new drawing',
-        data: newDrawing,
-      });
-    } catch (error) {
-      res.status(400).json({
-        statusCode: 400,
-        success: false,
-        message: 'Failed to create a new drawing',
-      });
-    }
+    res.status(201).json({
+      statusCode: 201,
+      success: true,
+      message: 'Successfully created a new drawing',
+      data: newDrawing,
+    });
   },
 );
 
@@ -30,12 +22,13 @@ export const createDrawing: RequestHandler = catchAsync(
 export const getAllDrawings: RequestHandler = catchAsync(
   async (req: Request, res: Response): Promise<void> => {
     const drawings = await DrawingModel.find();
-
+    const total = await DrawingModel.countDocuments({});
     if (drawings.length > 0) {
       res.status(200).json({
         statusCode: 200,
         success: true,
         message: 'Successfully retrieved all drawing data',
+        totalData: total,
         data: drawings,
       });
     } else {
@@ -76,37 +69,29 @@ export const updateDrawing: RequestHandler = catchAsync(
   async (req: Request, res: Response): Promise<void> => {
     const { id } = req.params;
 
-    try {
-      const updatedDrawingData = validateDrawing(req.body);
+    const updatedDrawingData = UpdateDrawing(req.body);
 
-      const updatedDrawing = await DrawingModel.findByIdAndUpdate(
-        id,
-        updatedDrawingData,
-        {
-          new: true,
-          runValidators: true,
-        },
-      );
+    const updatedDrawing = await DrawingModel.findByIdAndUpdate(
+      id,
+      updatedDrawingData,
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
 
-      if (updatedDrawing) {
-        res.status(200).json({
-          statusCode: 200,
-          success: true,
-          message: 'Successfully updated the drawing',
-          data: updatedDrawing,
-        });
-      } else {
-        res.status(404).json({
-          statusCode: 404,
-          success: false,
-          message: 'Drawing not found for updating',
-        });
-      }
-    } catch (error) {
-      res.status(400).json({
-        statusCode: 400,
+    if (updatedDrawing) {
+      res.status(200).json({
+        statusCode: 200,
+        success: true,
+        message: 'Successfully updated the drawing',
+        data: updatedDrawing,
+      });
+    } else {
+      res.status(404).json({
+        statusCode: 404,
         success: false,
-        message: 'Failed to update the drawing',
+        message: 'Drawing not found for updating',
       });
     }
   },

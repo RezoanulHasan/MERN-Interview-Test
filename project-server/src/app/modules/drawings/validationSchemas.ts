@@ -13,3 +13,8 @@ export const DrawingValidationSchema = z.object({
   description: z.string(),
   elements: z.array(DrawingElementSchema),
 });
+export const UpdateDrawingValidationSchema = z.object({
+  title: z.string().optional(),
+  description: z.string().optional(),
+  elements: z.array(DrawingElementSchema).optional(),
+});

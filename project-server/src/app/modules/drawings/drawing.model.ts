@@ -1,10 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import mongoose, { Schema, Document, Model } from 'mongoose';
 import { DrawingValidationSchema as ValidationDrawingSchema } from './validationSchemas';
+import { UpdateDrawingValidationSchema } from './validationSchemas';
 
 export interface IDrawingElement {
   type: 'line' | 'shape' | 'text';
-  coordinates: number[]; // this should be [x1, y1, x2, y2]
+  coordinates: number[];
   text?: string;
 }
 
@@ -18,7 +19,7 @@ export interface IDrawing extends Document {
 
 const DrawingSchema: Schema = new Schema(
   {
-    title: { type: String, required: true },
+    title: { type: String, required: true, unique: true },
     description: { type: String },
     elements: [
       {
@@ -47,7 +48,6 @@ const DrawingSchema: Schema = new Schema(
   },
 );
 
-// Mongoose model for Drawing
 export const DrawingModel: Model<IDrawing> = mongoose.model<IDrawing>(
   'Drawing',
   DrawingSchema,
@@ -56,3 +56,5 @@ export const DrawingModel: Model<IDrawing> = mongoose.model<IDrawing>(
 // Zod validation for drawing input data (to validate before saving)
 export const validateDrawing = (data: Record<string, any>) =>
   ValidationDrawingSchema.parse(data);
+export const UpdateDrawing = (data: Record<string, any>) =>
+  UpdateDrawingValidationSchema.parse(data);
