@@ -5,7 +5,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Component/Pages/Home/Home.tsx";
 import Error from "./Component/Shared/Error/Error.tsx";
-import DrawingDetailPage from "./Component/Pages/Home/DrawingDetailPage.tsx";
+import DrawingDetailPage from "./Component/Pages/Drawing/DrawingDetails/DrawingDetailPage.tsx";
 
 const router = createBrowserRouter([
   {

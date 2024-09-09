@@ -2,10 +2,12 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 import { useEffect } from "react";
-import SectionTitle from "../../Shared/SectionTitle/SectionTitle";
-import Heading from "../../Shared/Heading/Heading";
+
 import useTitle from "../../Hooks/useTitle";
-import AllDrawings from "./AllDrawings";
+import AllDrawings from "../Drawing/AllDrawings";
+import Container from "../../Shared/Container";
+
+import AddDrawing from "../Drawing/ADDDrawing/AddDrawing";
 
 const Home = () => {
   useTitle("Home"),
@@ -15,15 +17,11 @@ const Home = () => {
 
   return (
     <div>
-      <h1 className="text-4xl">home</h1>
-      <SectionTitle
-        subHeading="Explorer"
-        heading="Featured Item"
-      ></SectionTitle>
+      <AddDrawing></AddDrawing>
 
-      <Heading title="Explorer" subtitle="Featured Item"></Heading>
-
-      <AllDrawings />
+      <Container>
+        <AllDrawings />
+      </Container>
     </div>
   );
 };

@@ -1,10 +1,5 @@
 import React, { useRef, useEffect } from "react";
-
-interface DrawingElement {
-  type: "line" | "shape" | "text";
-  coordinates: number[];
-  text?: string;
-}
+import { DrawingElement } from "../../../Hooks/type";
 
 interface Props {
   elements: DrawingElement[];

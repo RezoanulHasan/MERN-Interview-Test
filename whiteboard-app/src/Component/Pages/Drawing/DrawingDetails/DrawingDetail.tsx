@@ -1,14 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from "react";
+import useTitle from "../../../Hooks/useTitle";
+import { fetchDrawingById } from "../../../api";
 import { useParams } from "react-router-dom";
-
-import { fetchDrawingById } from "../api";
-import Canvas from "./Home/Canvas";
-
-interface DrawingElement {
-  type: "line" | "shape" | "text";
-  coordinates: number[];
-  text?: string;
-}
+import Spinner from "../../../Shared/Spinner/Spinner";
+import Canvas from "./Canvas";
+import { DrawingElement } from "../../../Hooks/type";
 
 interface Drawing {
   title: string;
@@ -17,6 +14,7 @@ interface Drawing {
 }
 
 const DrawingDetail: React.FC = () => {
+  useTitle("Details Page");
   const { id } = useParams<{ id: string }>();
   const [drawing, setDrawing] = React.useState<Drawing | null>(null);
 
@@ -38,7 +36,7 @@ const DrawingDetail: React.FC = () => {
           {/* Passing elements to Canvas */}
         </div>
       ) : (
-        <p>Loading...</p>
+        <Spinner></Spinner>
       )}
     </div>
   );

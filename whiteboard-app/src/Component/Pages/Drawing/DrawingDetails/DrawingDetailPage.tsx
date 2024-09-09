@@ -1,5 +1,5 @@
 import React from "react";
-import DrawingDetail from "../DrawingDetail";
+import DrawingDetail from "./DrawingDetail";
 
 const DrawingDetailPage: React.FC = () => {
   return <DrawingDetail />;

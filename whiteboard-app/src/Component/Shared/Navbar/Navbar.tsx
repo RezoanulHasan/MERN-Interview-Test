@@ -9,7 +9,6 @@ const Navbar = () => {
         style={{ scaleX: scrollYProgress }}
         className=" progress-bar   "
       />
-      <h1 className="text-4xl">navber</h1>
     </div>
   );
 };

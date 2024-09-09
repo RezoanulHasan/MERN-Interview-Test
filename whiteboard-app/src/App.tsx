@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { Outlet } from "react-router-dom";
-import Footer from "./Component/Shared/Footer/Footer";
-import Navbar from "./Component/Shared/Navbar/Navbar";
+
 import { Link } from "react-scroll";
 import { FaArrowUp } from "react-icons/fa";
+import Navbar from "./Component/Shared/Navbar/Navbar";
 
 const App = () => {
   useEffect(() => {
@@ -12,8 +12,7 @@ const App = () => {
 
   return (
     <div id="top">
-      <Navbar />
-
+      <Navbar></Navbar>
       <div className="pt-24 min-h-[calc(100vh-68px)]">
         <Outlet />
       </div>
@@ -25,8 +24,6 @@ const App = () => {
           </button>
         </Link>{" "}
       </div>
-
-      <Footer />
     </div>
   );
 };

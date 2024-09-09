@@ -5,7 +5,7 @@ import { UpdateDrawingValidationSchema } from './validationSchemas';
 
 export interface IDrawingElement {
   type: 'line' | 'shape' | 'text';
-  coordinates: number[];
+  coordinates?: number[];
   text?: string;
 }
 
@@ -30,15 +30,9 @@ const DrawingSchema: Schema = new Schema(
         },
         coordinates: {
           type: [Number],
-          validate: {
-            validator: (arr: number[]) => arr.length === 4,
-            message: 'Coordinates must have exactly four numbers.',
-          },
-          required: true,
         },
         text: {
           type: String,
-          required: true,
         },
       },
     ],
