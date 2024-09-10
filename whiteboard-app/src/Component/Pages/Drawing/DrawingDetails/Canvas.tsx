@@ -30,8 +30,8 @@ const Canvas: React.FC<Props> = ({ elements }) => {
             const [x1, y1, x2, y2] = element.coordinates;
             ctx.beginPath();
             ctx.rect(x1, y1, x2 - x1, y2 - y1); // Draw the rectangle or square
-            ctx.strokeStyle = "black"; // Set shape outline color (optional)
-            ctx.lineWidth = 2; // Set outline width (optional)
+            ctx.strokeStyle = "black"; // Set shape outline color
+            ctx.lineWidth = 2; // Set outline width
             ctx.stroke(); // Render the shape
           } else if (element.type === "text") {
             const [x, y] = element.coordinates;

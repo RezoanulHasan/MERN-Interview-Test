@@ -11,9 +11,17 @@ const AddDrawing: React.FC = () => {
 
   return (
     <div className="p-6 max-w-5xl mx-auto bg-gray-50 shadow-lg rounded-lg mb-5">
-      <h1 className="text-4xl font-extrabold mb-6 text-center text-blue-600 animate-bounce">
-        Welcome to WhiteBoard
+      <h1 className="text-4xl font-extrabold mb-6 text-center text-blue-600 ">
+        Welcome to
+        <img
+          className="inline-block ml-2 w-20 h-20 border-4 border-blue-600 rounded-full shadow-lg transition-transform duration-300 hover:scale-110"
+          rel="icon"
+          src="/whiteboard.png"
+          alt="WhiteBoard Icon"
+        />
+        <span className="ml-2 text-blue-800 ">WhiteBoard</span>
       </h1>
+
       <p className="text-lg text-gray-600 text-center max-w-3xl mx-auto mb-8">
         Draw lines, shapes, and add text annotations on the whiteboard. Enhance
         your creativity and collaboration by sketching out your ideas in

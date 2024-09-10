@@ -16,7 +16,9 @@ const app: Application = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors());
-app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
+app.use(
+  cors({ origin: 'https://whiteboardrezoanul.netlify.app', credentials: true }),
+);
 
 //routes
 app.use('/api', router);
