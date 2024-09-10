@@ -7,7 +7,7 @@ const Spinner = () => {
         <Bars
           height="80"
           width="80"
-          color="#4fa94d"
+          color="#2563EB"
           ariaLabel="bars-loading"
           wrapperStyle={{}}
           wrapperClass=""

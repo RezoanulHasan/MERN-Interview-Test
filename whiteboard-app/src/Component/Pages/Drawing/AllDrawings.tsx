@@ -16,16 +16,15 @@ const AllDrawings: React.FC = () => {
         setDrawings(response.data.data);
         setLoading(false);
       })
-      .catch((error) => {
+      .catch(() => {
         setError("Error fetching drawings");
         setLoading(false);
       });
   }, []);
 
   const handleDelete = (id: string) => {
-    deleteDrawingById(id) // Assuming you have a function to call the delete API
+    deleteDrawingById(id)
       .then(() => {
-        // Remove the deleted drawing from the state
         setDrawings((prevDrawings) =>
           prevDrawings.filter((drawing) => drawing._id !== id)
         );
@@ -46,7 +45,9 @@ const AllDrawings: React.FC = () => {
   return drawings.length > 0 ? (
     <DrawingList drawings={drawings} onDelete={handleDelete} />
   ) : (
-    <p>No drawings available.</p>
+    <p className="text-red-500 text-xl font-semibold  mt-20">
+      No drawings available.
+    </p>
   );
 };
 

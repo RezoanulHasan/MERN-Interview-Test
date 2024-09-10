@@ -249,7 +249,7 @@ const Canvas: React.FC<Props> = ({
       />
       <button
         onClick={handleSaveClick}
-        className="px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-all"
+        className="px-6 py-2 btn  text-white rounded-lg btn-outline btn-info transition-all"
       >
         Save Drawing
       </button>

@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./Component/Pages/Home/Home.tsx";
 import Error from "./Component/Shared/Error/Error.tsx";
 import DrawingDetailPage from "./Component/Pages/Drawing/DrawingDetails/DrawingDetailPage.tsx";
+import AllDrawings from "./Component/Pages/Drawing/AllDrawings.tsx";
 
 const router = createBrowserRouter([
   {
@@ -21,11 +22,14 @@ const router = createBrowserRouter([
         path: "/drawings/:id",
         element: <DrawingDetailPage />,
       },
+      {
+        path: "/drawings",
+        element: <AllDrawings />,
+      },
     ],
   },
 ]);
 
-// Use createRoot from react-dom/client
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <RouterProvider router={router} />

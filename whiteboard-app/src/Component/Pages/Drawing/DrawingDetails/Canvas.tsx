@@ -44,14 +44,7 @@ const Canvas: React.FC<Props> = ({ elements }) => {
     }
   }, [elements]);
 
-  return (
-    <canvas
-      ref={canvasRef}
-      width={800}
-      height={600}
-      className="border bg-white"
-    />
-  );
+  return <canvas ref={canvasRef} width={800} height={600} />;
 };
 
 export default Canvas;

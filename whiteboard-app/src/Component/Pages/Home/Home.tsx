@@ -4,9 +4,8 @@
 import { useEffect } from "react";
 
 import useTitle from "../../Hooks/useTitle";
-import AllDrawings from "../Drawing/AllDrawings";
-import Container from "../../Shared/Container";
 
+import Container from "../../Shared/Container";
 import AddDrawing from "../Drawing/ADDDrawing/AddDrawing";
 
 const Home = () => {
@@ -17,10 +16,8 @@ const Home = () => {
 
   return (
     <div>
-      <AddDrawing></AddDrawing>
-
       <Container>
-        <AllDrawings />
+        <AddDrawing></AddDrawing>
       </Container>
     </div>
   );
